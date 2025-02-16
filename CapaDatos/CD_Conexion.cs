@@ -11,19 +11,35 @@ namespace CapaDatos
     internal class CD_Conexion
     {
 
-        private SqlConnection db_conexion = new SqlConnection("Data Source=EMORALES\\SQLEXPRESS;Initial Catalog=db_banco;Integrated Security=True;Encrypt=False");
+        private SqlConnection db_conexion = new SqlConnection("Server=TONY;Database=DB_Banco;Trusted_Connection=True;");
 
         public SqlConnection MtdAbrirConexion()
         {
-            if(db_conexion.State == ConnectionState.Closed)
-                db_conexion.Open();
+            try
+            {
+                if (db_conexion.State == ConnectionState.Closed)
+                    db_conexion.Open();
+            }
+            catch (SqlException ex)
+            {
+                // Manejo de la excepción, en caso de error en la conexión
+                Console.WriteLine("Error al abrir la conexión: " + ex.Message);
+            }
             return db_conexion;
         }
 
         public SqlConnection MtdCerrarConexion()
         {
-            if (db_conexion.State == ConnectionState.Closed)
-                db_conexion.Close();
+            try
+            {
+                if (db_conexion.State == ConnectionState.Open)
+                    db_conexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                // Manejo de la excepción, en caso de error al cerrar la conexión
+                Console.WriteLine("Error al cerrar la conexión: " + ex.Message);
+            }
             return db_conexion;
         }
     }

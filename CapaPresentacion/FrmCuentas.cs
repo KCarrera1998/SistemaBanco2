@@ -58,14 +58,19 @@ namespace CapaPresentacion
             }
         }
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void dgvCuentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvCuentas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigoCuenta.Text = dgvCuentas.SelectedCells[0].Value.ToString();
         }
     }
 }

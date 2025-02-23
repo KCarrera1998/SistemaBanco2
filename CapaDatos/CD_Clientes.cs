@@ -38,6 +38,33 @@ namespace CapaDatos
             db_conexion.MtdCerrarConexion();
         }
 
+        public void MtdActualizarClientes(int Codigo, string Nombre, string Direccion, string Departamento, string Pais, string Categoria, string Estado)
+        {
+            string usp_actualizar ="usp_clientes_editar";
+            SqlCommand cmd_UspActualizarClientes = new SqlCommand(usp_actualizar, db_conexion.MtdAbrirConexion());
+            cmd_UspActualizarClientes.CommandType = CommandType.StoredProcedure;
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Codigo", Codigo);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Nombre", Nombre);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Direccion", Direccion);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Departamento", Departamento);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Pais", Pais);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Categoria", Categoria);
+            cmd_UspActualizarClientes.Parameters.AddWithValue("@Estado", Estado);
+            cmd_UspActualizarClientes.ExecuteNonQuery();
+
+            db_conexion.MtdCerrarConexion();
+        }
+
+        public void MtdEliminarClientes(int Codigo)
+        {
+            string usp_eliminar = "usp_clientes_eliminar";
+            SqlCommand cmdUspEliminar = new SqlCommand(usp_eliminar, db_conexion.MtdAbrirConexion());
+            cmdUspEliminar.CommandType=CommandType.StoredProcedure;
+            cmdUspEliminar.Parameters.AddWithValue("@Codigo", Codigo);
+            cmdUspEliminar.ExecuteNonQuery();
+
+            db_conexion.MtdCerrarConexion();
+        }
 
     }
 }

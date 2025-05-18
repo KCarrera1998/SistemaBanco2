@@ -40,7 +40,7 @@ namespace CapaDatos
 
         public void MtdActualizarClientes(int Codigo, string Nombre, string Direccion, string Departamento, string Pais, string Categoria, string Estado)
         {
-            string usp_actualizar ="usp_clientes_editar";
+            string usp_actualizar ="usp_clientes_modificar";
             SqlCommand cmd_UspActualizarClientes = new SqlCommand(usp_actualizar, db_conexion.MtdAbrirConexion());
             cmd_UspActualizarClientes.CommandType = CommandType.StoredProcedure;
             cmd_UspActualizarClientes.Parameters.AddWithValue("@Codigo", Codigo);

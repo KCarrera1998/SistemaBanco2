@@ -11,7 +11,7 @@ namespace CapaDatos
     internal class CD_Conexion
     {
 
-        private SqlConnection db_conexion = new SqlConnection("Server=TONY;Database=DB_Banco;Trusted_Connection=True;");
+        private SqlConnection db_conexion = new SqlConnection("Server=TONY;Database=DB_Banco2;Trusted_Connection=True;");
 
         public SqlConnection MtdAbrirConexion()
         {
